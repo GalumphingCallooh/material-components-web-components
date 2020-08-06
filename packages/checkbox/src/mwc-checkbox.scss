@@ -16,7 +16,6 @@ limitations under the License.
 */
 
 @use '@material/checkbox';
-@use '@material/theme';
 
 @include checkbox.without-ripple();
 
@@ -24,55 +23,3 @@ limitations under the License.
   outline: none;
   display: inline-block;
 }
-
-.mdc-checkbox {
-  .mdc-checkbox__native-control:focus ~ .mdc-checkbox__background::before {
-    @include theme.prop(background-color, (
-      varname: --mdc-checkbox-unchecked-color,
-      fallback: checkbox.$border-color
-    ));
-  }
-  /* disable non-upgraded ripple on checkbox backround */
-  .mdc-checkbox__background::before {
-    content: none;
-  }
-}
-
-@include checkbox.disabled-container-colors(
-  $unmarked-stroke-color: (
-    varname: --mdc-checkbox-disabled-color,
-    fallback: checkbox.$disabled-color
-  ),
-  $marked-fill-color: (
-    varname: --mdc-checkbox-disabled-color,
-    fallback: checkbox.$disabled-color
-  ),
-);
-@include checkbox.container-colors(
-  $unmarked-stroke-color: (
-    varname: --mdc-checkbox-unchecked-color,
-    fallback: checkbox.$border-color
-  ),
-  $marked-stroke-color: (
-    varname: --m-checkbox-checked-color,
-    fallback: (
-      varname: --mdc-theme-secondary,
-      fallback: theme.prop-value(checkbox.$baseline-theme-color)
-    )
-  ),
-  $marked-fill-color: (
-    varname: --m-checkbox-checked-color,
-    fallback: (
-      varname: --mdc-theme-secondary,
-      fallback: theme.prop-value(checkbox.$baseline-theme-color)
-    )
-  ),
-);
-@include checkbox.ink-color((
-  varname: --mdc-checkbox-mark-color,
-  fallback: checkbox.$mark-color
-));
-@include checkbox.disabled-ink-color((
-  varname: --mdc-checkbox-mark-color,
-  fallback: checkbox.$mark-color
-));
